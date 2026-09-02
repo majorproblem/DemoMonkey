@@ -7,34 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		284330A7081C6C5600D9770F /* Preferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 284330A5081C6C5600D9770F /* Preferences.nib */; };
 		289915970818FD6700EA8C28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289915960818FD6700EA8C28 /* AppDelegate.m */; };
 		28B2AE25080F575700403FAE /* DisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B2AE22080F575700403FAE /* DisplayController.m */; };
 		28B2AE26080F575700403FAE /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B2AE24080F575700403FAE /* EditController.m */; };
-		28B2AE2B080F576E00403FAE /* Display.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28B2AE27080F576E00403FAE /* Display.nib */; };
-		28B2AE2C080F576E00403FAE /* Edit.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28B2AE29080F576E00403FAE /* Edit.nib */; };
 		28B2AF1E080F91AA00403FAE /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B2AF1D080F91AA00403FAE /* Step.m */; };
 		28DABBB80FBF22D500694A30 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28DABBB70FBF22D500694A30 /* ReadMe.txt */; };
 		28DABBBB0FBF233F00694A30 /* DMKArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DABBBA0FBF233F00694A30 /* DMKArrayController.m */; };
 		775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC310486D014006FF6A4 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		D19E7BFF302DF099003A213D /* Edit.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19E7BF8302DF099003A213D /* Edit.xib */; };
+		D19E7C00302DF099003A213D /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19E7BFA302DF099003A213D /* Preferences.xib */; };
+		D19E7C01302DF099003A213D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19E7BF9302DF099003A213D /* MainMenu.xib */; };
+		D19E7C02302DF099003A213D /* Display.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19E7BF7302DF099003A213D /* Display.xib */; };
+		D1C0AE0002000000000A213D /* DemoMonkey.icns in Resources */ = {isa = PBXBuildFile; fileRef = D1C0AE0001000000000A213D /* DemoMonkey.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		284330A6081C6C5600D9770F /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Preferences.nib; sourceTree = "<group>"; };
 		289915950818FD6700EA8C28 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		289915960818FD6700EA8C28 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		28B2AE21080F575700403FAE /* DisplayController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DisplayController.h; sourceTree = "<group>"; };
 		28B2AE22080F575700403FAE /* DisplayController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = DisplayController.m; sourceTree = "<group>"; };
 		28B2AE23080F575700403FAE /* EditController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EditController.h; sourceTree = "<group>"; };
 		28B2AE24080F575700403FAE /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
-		28B2AE28080F576E00403FAE /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Display.nib; sourceTree = "<group>"; };
-		28B2AE2A080F576E00403FAE /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Edit.nib; sourceTree = "<group>"; };
 		28B2AF1C080F91AA00403FAE /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
 		28B2AF1D080F91AA00403FAE /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
 		28DABBB70FBF22D500694A30 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
@@ -43,13 +41,17 @@
 		2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 		2A37F4AEFDCFA73011CA2CEA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2A37F4B7FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32DBCF750370BD2300C91783 /* DemoMonkey_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoMonkey_Prefix.pch; sourceTree = "<group>"; };
 		7788DA0506752A1600599AAD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* DemoMonkey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoMonkey.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D19E7BFB302DF099003A213D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D19E7BFC302DF099003A213D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Edit.xib; sourceTree = "<group>"; };
+		D19E7BFD302DF099003A213D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
+		D19E7BFE302DF099003A213D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Display.xib; sourceTree = "<group>"; };
+		D1C0AE0001000000000A213D /* DemoMonkey.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DemoMonkey.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,10 +151,11 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				28B2AE27080F576E00403FAE /* Display.nib */,
-				28B2AE29080F576E00403FAE /* Edit.nib */,
-				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
-				284330A5081C6C5600D9770F /* Preferences.nib */,
+				D19E7BF7302DF099003A213D /* Display.xib */,
+				D19E7BF8302DF099003A213D /* Edit.xib */,
+				D19E7BF9302DF099003A213D /* MainMenu.xib */,
+				D19E7BFA302DF099003A213D /* Preferences.xib */,
+				D1C0AE0001000000000A213D /* DemoMonkey.icns */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 			);
@@ -203,6 +206,8 @@
 /* Begin PBXProject section */
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 28B1F6080DC5C20E0093AEBE /* Build configuration list for PBXProject "DemoMonkey" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -227,12 +232,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
-				28B2AE2B080F576E00403FAE /* Display.nib in Resources */,
-				28B2AE2C080F576E00403FAE /* Edit.nib in Resources */,
-				284330A7081C6C5600D9770F /* Preferences.nib in Resources */,
+				D19E7BFF302DF099003A213D /* Edit.xib in Resources */,
+				D19E7C00302DF099003A213D /* Preferences.xib in Resources */,
+				D19E7C01302DF099003A213D /* MainMenu.xib in Resources */,
+				D19E7C02302DF099003A213D /* Display.xib in Resources */,
 				28DABBB80FBF22D500694A30 /* ReadMe.txt in Resources */,
+				D1C0AE0002000000000A213D /* DemoMonkey.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,36 +270,36 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		284330A5081C6C5600D9770F /* Preferences.nib */ = {
+		D19E7BF7302DF099003A213D /* Display.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				284330A6081C6C5600D9770F /* English */,
+				D19E7BFE302DF099003A213D /* English */,
 			);
-			name = Preferences.nib;
+			name = Display.xib;
 			sourceTree = "<group>";
 		};
-		28B2AE27080F576E00403FAE /* Display.nib */ = {
+		D19E7BF8302DF099003A213D /* Edit.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				28B2AE28080F576E00403FAE /* English */,
+				D19E7BFC302DF099003A213D /* English */,
 			);
-			name = Display.nib;
+			name = Edit.xib;
 			sourceTree = "<group>";
 		};
-		28B2AE29080F576E00403FAE /* Edit.nib */ = {
+		D19E7BF9302DF099003A213D /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				28B2AE2A080F576E00403FAE /* English */,
+				D19E7BFB302DF099003A213D /* English */,
 			);
-			name = Edit.nib;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */ = {
+		D19E7BFA302DF099003A213D /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2A37F4B7FDCFA73011CA2CEA /* English */,
+				D19E7BFD302DF099003A213D /* English */,
 			);
-			name = MainMenu.nib;
+			name = Preferences.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -334,6 +340,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = DemoMonkey;
 				WRAPPER_EXTENSION = app;
@@ -356,6 +363,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = DemoMonkey;
 				WRAPPER_EXTENSION = app;
@@ -376,6 +384,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = DemoMonkey;
 				WRAPPER_EXTENSION = app;

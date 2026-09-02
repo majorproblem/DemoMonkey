@@ -35,6 +35,8 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>DemoMonkey</string>
+	<key>CFBundleIconFile</key>
+	<string>DemoMonkey</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.apple.DemoMonkey</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -73,6 +75,9 @@
 			<key>NSReturnTypes</key>
 			<array>
 				<string>public.plain-text</string>
+				<string>public.utf8-plain-text</string>
+				<string>NSStringPboardType</string>
+				<string>public.source-code</string>
 			</array>
 		</dict>
 		<dict>

@@ -24,3 +24,6 @@ Pods
 CLAUDE.md
 English.lproj/backup/
 DemoMonkey orig.zip
+
+# Test harness build output
+Tests/build/

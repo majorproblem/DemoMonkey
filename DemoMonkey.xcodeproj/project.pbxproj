@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,7 @@
 		28B2AE25080F575700403FAE /* DisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B2AE22080F575700403FAE /* DisplayController.m */; };
 		28B2AE26080F575700403FAE /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B2AE24080F575700403FAE /* EditController.m */; };
 		28B2AF1E080F91AA00403FAE /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B2AF1D080F91AA00403FAE /* Step.m */; };
-		28DABBB80FBF22D500694A30 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28DABBB70FBF22D500694A30 /* ReadMe.txt */; };
+		28DABBB80FBF22D500694A30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 28DABBB70FBF22D500694A30 /* README.md */; };
 		28DABBBB0FBF233F00694A30 /* DMKArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DABBBA0FBF233F00694A30 /* DMKArrayController.m */; };
 		775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
@@ -35,7 +35,7 @@
 		28B2AE24080F575700403FAE /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
 		28B2AF1C080F91AA00403FAE /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
 		28B2AF1D080F91AA00403FAE /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
-		28DABBB70FBF22D500694A30 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		28DABBB70FBF22D500694A30 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		28DABBB90FBF233F00694A30 /* DMKArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMKArrayController.h; sourceTree = "<group>"; };
 		28DABBBA0FBF233F00694A30 /* DMKArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMKArrayController.m; sourceTree = "<group>"; };
 		2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* DemoMonkey */ = {
 			isa = PBXGroup;
 			children = (
-				28DABBB70FBF22D500694A30 /* ReadMe.txt */,
+				28DABBB70FBF22D500694A30 /* README.md */,
 				2A37F4ABFDCFA73011CA2CEA /* Document Controllers */,
 				28EB618D0FB8A38F00739008 /* Application Delegate */,
 				28B2AF9808108D3600403FAE /* Array Controller */,
@@ -209,7 +209,7 @@
 			attributes = {
 			};
 			buildConfigurationList = 28B1F6080DC5C20E0093AEBE /* Build configuration list for PBXProject "DemoMonkey" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -237,7 +237,7 @@
 				D19E7C00302DF099003A213D /* Preferences.xib in Resources */,
 				D19E7C01302DF099003A213D /* MainMenu.xib in Resources */,
 				D19E7C02302DF099003A213D /* Display.xib in Resources */,
-				28DABBB80FBF22D500694A30 /* ReadMe.txt in Resources */,
+				28DABBB80FBF22D500694A30 /* README.md in Resources */,
 				D1C0AE0002000000000A213D /* DemoMonkey.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +340,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = DemoMonkey;
 				WRAPPER_EXTENSION = app;
@@ -363,7 +363,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = DemoMonkey;
 				WRAPPER_EXTENSION = app;
@@ -384,7 +384,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = DemoMonkey;
 				WRAPPER_EXTENSION = app;

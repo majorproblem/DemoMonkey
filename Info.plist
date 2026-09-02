@@ -38,7 +38,7 @@
 	<key>CFBundleIconFile</key>
 	<string>DemoMonkey</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.DemoMonkey</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>CFBundlePackageType</key>
@@ -49,10 +49,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.1.1</string>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>14.6.0</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSServices</key>
@@ -141,10 +141,6 @@
 			</array>
 		</dict>
 		<dict>
-			<key>NSSendTypes</key>
-			<array>
-				<string>public.plain-text</string>
-			</array>
 			<key>NSKeyEquivalent</key>
 			<dict>
 				<key>default</key>
@@ -159,6 +155,10 @@
 			<string>createNewStep</string>
 			<key>NSPortName</key>
 			<string>DemoMonkey</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
 		</dict>
 	</array>
 </dict>

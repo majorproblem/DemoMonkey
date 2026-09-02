@@ -54,6 +54,7 @@
 static NSString *DMKOpenUntitledDocumentOnLaunchKey = @"openUntitledDocumentOnLaunch";
 NSString *DMKDisplayWindowAlphaKey = @"displayWindowAlpha";
 NSString *DMKDisplayToolTipsKey = @"displayToolTips";
+NSString *DMKDefaultLineEndingKey = @"defaultLineEnding";
 
 
 @implementation AppDelegate
@@ -74,23 +75,56 @@ NSString *DMKDisplayToolTipsKey = @"displayToolTips";
  */
 
 - (MyDocument *)mainDocument {
-    NSArray *documents = [[NSDocumentController sharedDocumentController] documents];
-    MyDocument *mainDocument = nil;
-    
-    if ([documents count] > 0) {
-        mainDocument = [documents objectAtIndex:0];
+
+    NSDocumentController *controller = [NSDocumentController sharedDocumentController];
+
+    /*
+     Walk the windows front to back and use the first one that belongs to a
+     document.  -[NSApp mainWindow] is no good here: a Service is invoked from
+     another application, so DemoMonkey isn't active and mainWindow is nil.
+     -orderedWindows still reflects the order the user last worked in.
+
+     Taking documents[0] instead, as this used to, meant the empty untitled
+     document opened at launch shadowed every document opened after it, and the
+     Service would forever read from the empty one.
+     */
+    for (NSWindow *window in [NSApp orderedWindows]) {
+        id document = [controller documentForWindow:window];
+        if ([document isKindOfClass:[MyDocument class]]) {
+            return document;
+        }
     }
-    return mainDocument;
+
+    // No document window is on screen -- they may all be miniaturised.
+    return (MyDocument *)[[controller documents] lastObject];
 }
 
 
+/*
+ The document converts the step to the line ending it was configured with, so
+ there's nothing to do here but hand the text over.  Report a reason when there
+ is no document to ask: leaving the pasteboard empty makes the system put up an
+ unhelpful "did not provide valid data" alert instead.
+ */
 - (void)getNextLine:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error {
+
     MyDocument *mainDocument = [self mainDocument];
-    if (mainDocument != nil) {
-        NSString *text = [mainDocument textForCurrentSelectionAndAdvance];
-        [pboard clearContents];
-        [pboard writeObjects:[NSArray arrayWithObject:text]];
+    if (mainDocument == nil) {
+        if (error != NULL) {
+            *error = NSLocalizedString(@"No DemoMonkey document is open.", @"Service error message");
+        }
+        return;
     }
+
+    NSString *text = [mainDocument textForCurrentSelectionAndAdvance];
+    if (text == nil) {
+        if (error != NULL) {
+            *error = NSLocalizedString(@"No step is selected in DemoMonkey.", @"Service error message");
+        }
+        return;
+    }
+    [pboard clearContents];
+    [pboard writeObjects:[NSArray arrayWithObject:text]];
 }
 
 - (void)rewind:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error {
@@ -106,7 +140,15 @@ NSString *DMKDisplayToolTipsKey = @"displayToolTips";
 }
 
 - (void)createNewStep:(NSPasteboard *)pboard userData:(NSString *)data error:(NSString **)error {
-    [[self mainDocument] createNewStep:pboard userData:data error:error];
+
+    MyDocument *mainDocument = [self mainDocument];
+    if (mainDocument == nil) {
+        if (error != NULL) {
+            *error = NSLocalizedString(@"No DemoMonkey document is open.", @"Service error message");
+        }
+        return;
+    }
+    [mainDocument createNewStep:pboard userData:data error:error];
 }
 
 
@@ -119,6 +161,7 @@ NSString *DMKDisplayToolTipsKey = @"displayToolTips";
     [initialValues setObject:[NSNumber numberWithBool:YES] forKey:DMKOpenUntitledDocumentOnLaunchKey];
     [initialValues setObject:[NSNumber numberWithInteger:1] forKey:DMKDisplayWindowAlphaKey];
     [initialValues setObject:[NSNumber numberWithBool:YES] forKey:DMKDisplayToolTipsKey];
+    [initialValues setObject:[NSNumber numberWithInteger:DMKLineEndingCarriageReturn] forKey:DMKDefaultLineEndingKey];
     
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:initialValues];
 }

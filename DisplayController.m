@@ -207,6 +207,11 @@ static const NSString *windowAlphaContext;
     
     [super windowDidLoad];
     [tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
+
+    // The summary column should always fill the table's width so widening the
+    // window shows more of each step's label rather than leaving empty space.
+    [tableView setColumnAutoresizingStyle:NSTableViewFirstColumnOnlyAutoresizingStyle];
+    [tableView sizeLastColumnToFit];
     
     NSUserDefaultsController *udc = [NSUserDefaultsController sharedUserDefaultsController];
     

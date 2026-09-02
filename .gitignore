@@ -18,3 +18,8 @@ DerivedData
 
 #CocoaPods
 Pods
+
+# Local-only
+CLAUDE.md
+English.lproj/backup/
+DemoMonkey orig.zip

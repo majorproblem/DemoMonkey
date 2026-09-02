@@ -51,6 +51,7 @@
 
 extern NSString *DMKDisplayWindowAlphaKey;
 extern NSString *DMKDisplayToolTipsKey;
+extern NSString *DMKDefaultLineEndingKey;
 
 @interface AppDelegate : NSObject {
     NSWindowController *preferencesController;

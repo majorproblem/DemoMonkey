@@ -73,9 +73,11 @@
         }
         [self moveDownOneLine];
     }
-    else {
-        string = @"";
-    }
+    /*
+     Leave the string nil when nothing is selected.  That's distinct from a step
+     whose body is empty, which is legitimately an empty string, and it lets the
+     Service report a reason instead of handing back nothing.
+     */
     return string;
 }
 

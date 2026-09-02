@@ -52,13 +52,36 @@
 @class DisplayController;
 @class EditController;
 
+/*
+ The line ending written by the "Get Next Line" service.  Terminal hosts
+ disagree about what ends a line: a Unix tty (and an editor such as vi running
+ on one) accepts a line feed, whereas the OpenVMS terminal driver only treats a
+ carriage return as end-of-line.  A carriage return is what a terminal actually
+ sends when you press Return, so it is the default; the value is saved with the
+ document because a given presentation targets a given host.
+
+ The numeric values are stored in the document file and used as the menu item
+ tags of the pop-up in the edit window, so don't renumber them.
+ */
+enum {
+    DMKLineEndingCarriageReturn = 0,
+    DMKLineEndingLineFeed = 1,
+    DMKLineEndingCarriageReturnLineFeed = 2
+};
+typedef NSInteger DMKLineEnding;
+
+
 @interface MyDocument : NSDocument {
-    NSMutableArray *steps;    
+    NSMutableArray *steps;
     DisplayController *displayController;
+    DMKLineEnding lineEnding;
 }
 
 @property (nonatomic, assign) DisplayController *displayController;
 @property (nonatomic, assign, readonly) EditController *editController;
+@property (nonatomic, assign) DMKLineEnding lineEnding;
+
++ (DMKLineEnding)defaultLineEnding;
 
 // Services actions
 - (NSString *)textForCurrentSelectionAndAdvance;

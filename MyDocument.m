@@ -49,6 +49,7 @@
  
  */
 
+#import "AppDelegate.h"
 #import "MyDocument.h"
 #import "DisplayController.h"
 #import "EditController.h"
@@ -58,7 +59,69 @@
 @implementation MyDocument
 
 
-@synthesize displayController;
+@synthesize displayController, lineEnding;
+
+#pragma mark -
+#pragma mark Line endings
+
+/*
+ Rewrite the line breaks in a step so the receiving terminal recognises them.
+ Every variant is reduced to a single line feed first -- so that a carriage
+ return/line feed pair doesn't become two line breaks -- and the requested
+ terminator is then substituted.
+ */
+static NSString *DMKStringWithLineEnding(NSString *string, DMKLineEnding lineEnding) {
+
+    if (string == nil) {
+        return nil;
+    }
+
+    // NSTextView can also produce the Unicode line and paragraph separators.
+    NSString *lineSeparator = [NSString stringWithFormat:@"%C", (unichar)0x2028];
+    NSString *paragraphSeparator = [NSString stringWithFormat:@"%C", (unichar)0x2029];
+
+    NSString *result = string;
+    result = [result stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"];
+    result = [result stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
+    result = [result stringByReplacingOccurrencesOfString:lineSeparator withString:@"\n"];
+    result = [result stringByReplacingOccurrencesOfString:paragraphSeparator withString:@"\n"];
+
+    NSString *terminator = nil;
+    switch (lineEnding) {
+        case DMKLineEndingLineFeed:
+            return result;
+        case DMKLineEndingCarriageReturnLineFeed:
+            terminator = @"\r\n";
+            break;
+        case DMKLineEndingCarriageReturn:
+        default:
+            terminator = @"\r";
+            break;
+    }
+    return [result stringByReplacingOccurrencesOfString:@"\n" withString:terminator];
+}
+
+
+/*
+ The line ending a document starts out with, for new documents and for files
+ saved before the setting existed.  Once a document has been saved in the
+ current format it carries its own value and this preference no longer applies
+ to it.
+ */
++ (DMKLineEnding)defaultLineEnding {
+    id value = [[[NSUserDefaultsController sharedUserDefaultsController] values]
+                valueForKey:DMKDefaultLineEndingKey];
+    return (DMKLineEnding)[value integerValue];
+}
+
+
+- (void)setLineEnding:(DMKLineEnding)newLineEnding {
+    if (lineEnding != newLineEnding) {
+        [[[self undoManager] prepareWithInvocationTarget:self] setLineEnding:lineEnding];
+        lineEnding = newLineEnding;
+    }
+}
+
 
 #pragma mark -
 #pragma mark Services methods
@@ -67,7 +130,7 @@
  Service items apply to the display controller.
  */
 -(NSString *)textForCurrentSelectionAndAdvance {
-    return [displayController textForCurrentSelectionAndAdvance];
+    return DMKStringWithLineEnding([displayController textForCurrentSelectionAndAdvance], lineEnding);
 }
 
 - (void)rewind {
@@ -87,13 +150,22 @@
     NSArray *newSteps = [pboard readObjectsForClasses:[NSArray arrayWithObject:[Step class]] options:[NSDictionary dictionary]];
     
     if ([newSteps count] != 1) {
-        *error = NSLocalizedString(@"Couldn't create a step", @"Service error message");
+        if (error != NULL) {
+            *error = NSLocalizedString(@"Couldn't create a step", @"Service error message");
+        }
         return;
     }
-    
-    Step *newStep = [newSteps objectAtIndex:0];    
-    NSUInteger currentStepCount = [self countOfSteps];    
-    newStep.tableSummary = [NSString stringWithFormat:@"Step %d", currentStepCount];
+
+    /*
+     The captured text keeps whatever line breaks the source app used; the
+     document's line ending is applied when the step is handed back out by the
+     "Get Next Line" service, so anything pasted in here works regardless of
+     where it came from.
+     */
+    Step *newStep = [newSteps objectAtIndex:0];
+    NSUInteger currentStepCount = [self countOfSteps];
+    // Match the numbering the Add button uses, which is 1-based.
+    newStep.tableSummary = [NSString stringWithFormat:@"Step %lu", (unsigned long)(currentStepCount + 1)];
     newStep.undoManager = [self undoManager];
     
     [self insertObject:newStep inStepsAtIndex:currentStepCount];    
@@ -104,16 +176,53 @@
 #pragma mark -
 #pragma mark Reading and writing file
 
+/*
+ A document was originally stored as a bare archived array of steps.  Now that
+ there is a document-level setting to record as well, the root object is a
+ dictionary.  Both shapes are accepted on read so existing files still open.
+ */
+static NSString *DMKStepsKey = @"Steps";
+static NSString *DMKLineEndingKey = @"LineEnding";
+
+
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
 
-    NSArray *newSteps = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    self.steps = newSteps;
+    id root = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+    if ([root isKindOfClass:[NSDictionary class]]) {
+        self.steps = [root objectForKey:DMKStepsKey];
+        // Assign the ivar directly: loading a file isn't an undoable edit.
+        lineEnding = [[root objectForKey:DMKLineEndingKey] integerValue];
+    }
+    else if ([root isKindOfClass:[NSArray class]]) {
+        // Written before the line ending was configurable.
+        self.steps = root;
+        lineEnding = [MyDocument defaultLineEnding];
+    }
+    else {
+        if (outError != NULL) {
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:
+                                      NSLocalizedString(@"The file isn't a DemoMonkey document.", @"Read error message")
+                                                                forKey:NSLocalizedDescriptionKey];
+            *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:userInfo];
+        }
+        return NO;
+    }
+
+    if (steps == nil) {
+        self.steps = [NSArray array];
+    }
     return YES;
 }
 
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
-    return [NSKeyedArchiver archivedDataWithRootObject:steps];
+
+    NSDictionary *root = [NSDictionary dictionaryWithObjectsAndKeys:
+                          steps, DMKStepsKey,
+                          [NSNumber numberWithInteger:lineEnding], DMKLineEndingKey,
+                          nil];
+    return [NSKeyedArchiver archivedDataWithRootObject:root];
 }
 
 
@@ -211,8 +320,9 @@
 - init {
     if (self = [super init]) {
         steps = [[NSMutableArray alloc] init];
+        lineEnding = [MyDocument defaultLineEnding];
     }
-    return self;    
+    return self;
 }
 
 

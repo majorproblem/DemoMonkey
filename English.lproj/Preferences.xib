@@ -15,14 +15,41 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="5" userLabel="Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="336" y="478" width="284" height="139"/>
+            <rect key="contentRect" x="336" y="478" width="284" height="201"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1410"/>
             <view key="contentView" id="6">
-                <rect key="frame" x="0.0" y="0.0" width="284" height="139"/>
+                <rect key="frame" x="0.0" y="0.0" width="284" height="201"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PL-lb-l01">
+                        <rect key="frame" x="17" y="49" width="249" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Default line ending for new documents:" id="PL-lb-c01">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PL-pb-p01">
+                        <rect key="frame" x="18" y="18" width="248" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Carriage return (OpenVMS, terminals)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" selectedItem="PL-mi-cr1" id="PL-pb-c01">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" title="OtherViews" id="PL-mn-m01">
+                                <items>
+                                    <menuItem title="Carriage return (OpenVMS, terminals)" state="on" tag="0" id="PL-mi-cr1"/>
+                                    <menuItem title="Line feed (Unix, macOS)" tag="1" id="PL-mi-lf1"/>
+                                    <menuItem title="Carriage return + line feed" tag="2" id="PL-mi-cl1"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <binding destination="10" name="selectedTag" keyPath="values.defaultLineEnding" id="PL-bd-b01"/>
+                        </connections>
+                    </popUpButton>
                     <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8">
-                        <rect key="frame" x="18" y="18" width="248" height="18"/>
+                        <rect key="frame" x="18" y="80" width="248" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Open untitled document on launch" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="100008">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -33,7 +60,7 @@
                         </connections>
                     </button>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13">
-                        <rect key="frame" x="70" y="75" width="196" height="21"/>
+                        <rect key="frame" x="70" y="137" width="196" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" continuous="YES" alignment="left" minValue="0.10000000000000001" maxValue="1" doubleValue="1" tickMarkPosition="below" sliderType="linear" id="100013">
                             <font key="font" size="12" name="Helvetica"/>
@@ -43,7 +70,7 @@
                         </connections>
                     </slider>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15">
-                        <rect key="frame" x="17" y="102" width="167" height="17"/>
+                        <rect key="frame" x="17" y="164" width="167" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Alpha for display window" id="100015">
                             <font key="font" metaFont="system"/>
@@ -52,11 +79,11 @@
                         </textFieldCell>
                     </textField>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="16">
-                        <rect key="frame" x="189" y="103" width="75" height="5"/>
+                        <rect key="frame" x="189" y="165" width="75" height="5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </box>
                     <button imageHugsTitle="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18">
-                        <rect key="frame" x="18" y="38" width="131" height="18"/>
+                        <rect key="frame" x="18" y="100" width="131" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="check" title="Display tool tips" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="100018">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
